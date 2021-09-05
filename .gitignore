@@ -1,3 +1,6 @@
 application/.idea/
 application/DW_venv/
 application/__pycache__/
+application/pythonScriptName.spec
+application/build/main/base_library.zip
+application/build/main/main.exe.manifest
