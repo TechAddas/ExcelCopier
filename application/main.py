@@ -38,8 +38,8 @@ class Application():
         upld.grid(row=3, columnspan=3, pady=10)
 
     def uploadFiles(self):
-        if (self.up.hasValue(self.up.input1_file) and self.up.hasValue(self.up.input2_file)) \
-            or (self.up.hasValue(self.up.input1_file) and self.up.hasValue(self.up.input2_file)):
+        if (self.up.hasValue(self.up.input1_file) and self.up.hasValue(self.up.filter_file)) \
+            or (self.up.hasValue(self.up.input2_file) and self.up.hasValue(self.up.filter_file)):
             Label(ws, text='', foreground='green').grid(row=4, columnspan=3, pady=10)
             pb1 = Progressbar(
                 ws, 

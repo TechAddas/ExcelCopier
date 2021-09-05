@@ -30,13 +30,16 @@ class Upload():
         print("self.input1_file,self.input2_file,self.filter_file",self.input1_file.get(),self.input2_file.get(),self.filter_file.get())
     
     def hasValue(self, inputobject):
-        return inputobject.get() is not None and inputobject.get() != ""
+        if inputobject is not None:
+            return inputobject.get() is not None and inputobject.get() != ""
+        else:
+            return ""
     
     def uploadFiles(self):
-        if self.hasValue(self.input1_file) and self.hasValue(self.input2_file):
+        if self.hasValue(self.input1_file) and self.hasValue(self.filter_file):
             mc.createDfFromExcel(self.input1_file,self.filter_file,"Site ID" ,1,"R-Inputs")
 
-        if (self.hasValue(self.input1_file) and self.hasValue(self.input2_file)):
+        if (self.hasValue(self.input2_file) and self.hasValue(self.filter_file)):
             mc.createDfFromExcel(self.input2_file,self.filter_file,"Site ID" ,2,"IP_Input_1")
             mc.createDfFromExcel(self.input2_file,self.filter_file,"Site ID" ,3,"IP_Input_2")
 
