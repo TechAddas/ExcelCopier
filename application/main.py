@@ -16,13 +16,13 @@ class Application():
         self.create_widgets(ws)
 
     def create_widgets(self,ws):
-        input = Label(ws, text='Upload Input file in xlsx format ')
+        input = Label(ws, text='Upload first Input file in xlsx format')
         input.grid(row=0, column=0, padx=10)
 
         inputbtn = Button(ws, text ='Choose File', command = lambda:self.up.open_file('i')) 
         inputbtn.grid(row=0, column=1)
 
-        output = Label(ws, text='Upload Output file in xlsx format ')
+        output = Label(ws, text='Upload secomd Input file in xlsx format')
         output.grid(row=1, column=0, padx=10)
 
         outputbtn = Button(ws, text ='Choose File ', command = lambda:self.up.open_file('o')) 
@@ -38,7 +38,8 @@ class Application():
         upld.grid(row=3, columnspan=3, pady=10)
 
     def uploadFiles(self):
-        if self.up.hasValue(self.up.input1_file) and self.up.hasValue(self.up.input2_file) and self.up.hasValue(self.up.filter_file):
+        if (self.up.hasValue(self.up.input1_file) and self.up.hasValue(self.up.input2_file)) \
+            or (self.up.hasValue(self.up.input1_file) and self.up.hasValue(self.up.input2_file)):
             Label(ws, text='', foreground='green').grid(row=4, columnspan=3, pady=10)
             pb1 = Progressbar(
                 ws, 

@@ -1,15 +1,14 @@
 import pandas as pd
 import openpyxl
 
-def WriteTOSheet(filename, sheetname, data):
-    writer = pd.ExcelWriter(filename, engine='openpyxl',mode='a',if_sheet_exists="replace")
-    data.to_excel(writer, sheet_name=sheetname, index=False)
-    writer.save()
+outputfilename="Output_Sheet_original.xlsx"
 
-def removeSheet(FileName, sheetName):
-    workbook=openpyxl.load_workbook(FileName)
-    sheets=workbook.get_sheet_names()
-    if sheetName in sheets:
-        std=workbook.get_sheet_by_name(sheetName)
-        workbook.remove_sheet(std)
-    workbook.save(FileName)
+def makeoutputsheetblank(outputsheetname,rowindex,colindex):
+    myworkbook=openpyxl.load_workbook(outputfilename)
+    worksheet= myworkbook[outputsheetname]
+    for  rowindexvalue in range(0,rowindex):
+        for index in range(1,colindex):
+            worksheet.cell(row=int(rowindexvalue)+4,column=index).value=""
+    myworkbook.save(outputfilename)
+    myworkbook.close()
+
